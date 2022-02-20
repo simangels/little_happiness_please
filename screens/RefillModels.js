@@ -25,8 +25,6 @@ function RefillModels() {
             "id": 12,
             "question": "How you feeling today?",
         }
-
-
     ]
 
 
@@ -79,9 +77,8 @@ function RefillModels() {
                     <View style={styles.ModelContentStyles} >
                         <ScrollView>
                             {Data.map((item, index) => {
-                                console.log(item)
                                 return (
-                                    <QuestionAnswers question={item.question} />
+                                    <QuestionAnswers key={item.id} question={item.question} />
                                 )
                             })}
                         </ScrollView>
