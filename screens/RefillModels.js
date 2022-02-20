@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text, View, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
+import { Button, Text, View, TouchableOpacity, StyleSheet, Dimensions, TextInput, ScrollView } from "react-native";
 import Modal from "react-native-modal";
 
 function RefillModels() {
@@ -8,6 +8,27 @@ function RefillModels() {
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
+
+
+
+    const Data = [
+        {
+            "id": 10,
+            "question": "What are you doing?",
+        },
+        {
+            "id": 11,
+            "question": "How many miles did you ran today?",
+        }
+        ,
+        {
+            "id": 12,
+            "question": "How you feeling today?",
+        }
+
+
+    ]
+
 
 
 
@@ -24,6 +45,18 @@ function RefillModels() {
         );
     }
 
+
+    const QuestionAnswers = props => {
+        return (
+            <View>
+                <Text>
+                    {props.question}
+                </Text>
+                <TextInput style={styles.textinputStyles} />
+            </View>
+
+        );
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -44,8 +77,14 @@ function RefillModels() {
             >
                 <View style={styles.modelContainerStyles}>
                     <View style={styles.ModelContentStyles} >
-
-                        <Text>Hello!</Text>
+                        <ScrollView>
+                            {Data.map((item, index) => {
+                                console.log(item)
+                                return (
+                                    <QuestionAnswers question={item.question} />
+                                )
+                            })}
+                        </ScrollView>
 
                     </View>
 
@@ -61,6 +100,13 @@ function RefillModels() {
 
 const styles = StyleSheet.create({
 
+    textinputStyles: {
+        borderWidth: 1,
+        borderColor: "black",
+        padding: 0,
+        margin: 15
+    },
+
 
     modelContainerStyles: {
         flex: 1,
@@ -69,7 +115,7 @@ const styles = StyleSheet.create({
 
     ModelContentStyles: {
         width: "100%",
-        height: "80%",
+        minHeight: "50%",
 
         backgroundColor: "rgba(149, 165, 166,1)",
 
