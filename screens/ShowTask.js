@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList, Image, ImageBackground, Dimensions } from 'react-native';
+import Modal from "react-native-modal";
+import RefillModels from './RefillModels';
+
 
 
 
@@ -63,6 +66,14 @@ export default function ShowTasks() {
     ]
 
 
+
+    const DrawLine = params => {
+        return (
+            <View style={{ borderWidth: 1, borderColor: "white", width: "100%", marginBottom: 10 }} />
+
+        )
+    }
+
     render_cards = item => {
         var index = item.index
         var params = item.item
@@ -85,8 +96,8 @@ export default function ShowTasks() {
                         {params.description}
                     </Text>
 
+                    <DrawLine />
 
-                    <View style={{ borderWidth: 1, borderColor: "white", width: "100%", marginBottom: 10 }} />
 
                     <Text
                         style={styles.stats_fields_text_styles} >
@@ -111,11 +122,9 @@ export default function ShowTasks() {
                 </View>
 
 
-                <View style={styles.refill_styles}>
-                    <Text style={styles.text_refill_styles}>
-                        Refill
-                    </Text>
-                </View>
+
+                <RefillModels />
+
 
             </View>
 
