@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList, Image, ImageBackground, Dimensions } from 'react-native';
+import ShowTasks from './screens/ShowTask';
 
 
 
@@ -8,6 +9,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList, Image, Imag
 
 
 export default function App() {
+
+  return (
+    <ShowTasks />
+  );
 
 
   return (
