@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList, Image, ImageBackground, Dimensions } from 'react-native';
 import Modal from "react-native-modal";
 import RefillModels from './RefillModels';
+import { get_tasks } from './../apis/tasks';
 
 
 
@@ -9,61 +10,61 @@ import RefillModels from './RefillModels';
 
 export default function ShowTasks() {
 
+    const [value, set_value] = useState();
 
-    var DATA = [
-        {
-            "id": 10,
-            "name": "Health- Execise",
-            "description": "Regular physical activity can improve your muscle strength \
-                            and boost your endurance. Exercise delivers oxygen and nutrients \
-                            to your tissues and helps your cardiovascular system work more \
-                            efficiently. And when your heart and lung health improve, you \
-                            have more energy to tackle daily chores.",
-            "filled_count": 10,
-            "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
-            "avg_value": 6,
-            "last_entry": 18
-        }, {
-            "id": 12,
-            "name": "Health- Execise",
-            "description": "Regular physical activity can improve your muscle strength \
-                            and boost your endurance. Exercise delivers oxygen and nutrients \
-                            to your tissues and helps your cardiovascular system work more \
-                            efficiently. And when your heart and lung health improve, you \
-                            have more energy to tackle daily chores.",
-            "filled_count": 10,
-            "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
-            "avg_value": 6,
-            "last_entry": 18
-        }
-        , {
-            "id": 14,
-            "name": "Health- Execise",
-            "description": "Regular physical activity can improve your muscle strength \
-                            and boost your endurance. Exercise delivers oxygen and nutrients \
-                            to your tissues and helps your cardiovascular system work more \
-                            efficiently. And when your heart and lung health improve, you \
-                            have more energy to tackle daily chores.",
-            "filled_count": 10,
-            "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
-            "avg_value": 6,
-            "last_entry": 18
-        }
-        , {
-            "id": 15,
-            "name": "Health- Execise",
-            "description": "Regular physical activity can improve your muscle strength \
-                            and boost your endurance. Exercise delivers oxygen and nutrients \
-                            to your tissues and helps your cardiovascular system work more \
-                            efficiently. And when your heart and lung health improve, you \
-                            have more energy to tackle daily chores.",
-            "filled_count": 10,
-            "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
-            "avg_value": 6,
-            "last_entry": 18
-        }
 
-    ]
+    useEffect(() => {
+        get_tasks(set_value);
+        console.log(value)
+    }, []);
+
+
+    var DATA = value;
+
+
+
+    // var DATA = [
+    //     {
+    //         "id": 10,
+    //         "name": "Health- Execise",
+    //         "description": "Regular physical activity can improve your muscle strength \
+    //                         and boost your endurance. Exercise delivers oxygen and nutrients \
+    //                         to your tissues and helps your cardiovascular system work more \
+    //                         efficiently. And when your heart and lung health improve, you \
+    //                         have more energy to tackle daily chores.",
+    //         "filled_count": 10,
+    //         "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
+    //         "avg_value": 6,
+    //         "last_entry": 18
+    //     }, {
+    //         "id": 12,
+    //         "name": "DS",
+    //         "description": "I have to learning GAN.",
+    //         "filled_count": 10,
+    //         "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
+    //         "avg_value": 6,
+    //         "last_entry": 18
+    //     }
+    //     , {
+    //         "id": 14,
+    //         "name": "DS",
+    //         "description": "I have learning GPT.",
+    //         "filled_count": 10,
+    //         "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
+    //         "avg_value": 6,
+    //         "last_entry": 18
+    //     }
+    //     , {
+    //         "id": 15,
+    //         "name": "English",
+    //         "description": "English Course.",
+    //         "filled_count": 10,
+    //         "duration_left": Date.parse('2022-02-20 18:24:42.133734'),
+    //         "avg_value": 6,
+    //         "last_entry": 18
+    //     }
+
+    // ]
 
 
 
@@ -142,7 +143,7 @@ export default function ShowTasks() {
         <FlatList
             data={DATA}
             renderItem={render_cards}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.task_id}
             contentContainerStyle={styles.all_cards_container_styles}
             bounces={true}
         />
