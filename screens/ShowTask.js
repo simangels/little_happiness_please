@@ -124,7 +124,7 @@ export default function ShowTasks() {
 
 
 
-                <RefillModels />
+                <RefillModels data={params.question_id_and_question_arr} />
 
 
             </View>

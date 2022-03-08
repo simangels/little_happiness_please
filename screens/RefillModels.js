@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Text, View, TouchableOpacity, StyleSheet, Dimensions, TextInput, ScrollView } from "react-native";
 import Modal from "react-native-modal";
 
-function RefillModels() {
+function RefillModels(props) {
     const [isModalVisible, setModalVisible] = useState(false);
 
     const [answers, setAnswers] = useState({});
@@ -22,23 +22,24 @@ function RefillModels() {
     }
 
 
+    const Data = props.data
 
 
-    const Data = [
-        {
-            "id": 10,
-            "question": "What are you doing?",
-        },
-        {
-            "id": 11,
-            "question": "How many miles did you ran today?",
-        }
-        ,
-        {
-            "id": 12,
-            "question": "How you feeling today?",
-        }
-    ]
+    // const Data = [
+    //     {
+    //         "id": 10,
+    //         "question": "What are you doing?",
+    //     },
+    //     {
+    //         "id": 11,
+    //         "question": "How many miles did you ran today?",
+    //     }
+    //     ,
+    //     {
+    //         "id": 12,
+    //         "question": "How you feeling today?",
+    //     }
+    // ]
 
 
 
@@ -95,7 +96,7 @@ function RefillModels() {
                         <ScrollView>
                             {Data.map((item, index) => {
                                 return (
-                                    <QuestionAnswers key={item.id} question={item.question} questionId={item.id} />
+                                    <QuestionAnswers key={item.question_id} question={item.question} questionId={item.id} />
                                 )
                             })}
                         </ScrollView>
